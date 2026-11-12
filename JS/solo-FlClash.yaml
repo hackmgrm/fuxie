@@ -1,5 +1,5 @@
-# FlClash 自定义配置测试模板：导入后在外部资源中添加机场节点来源。
-# 导入会替换现有自定义配置，请先备份并新建测试配置。
+# FlClash 自定义配置测试模板。导入会替换已有配置，请备份并在新配置中测试。
+# 地区组通过名称过滤：缺少对应地区时可能产生空组，需删除或调整。
 mixed-port: 7890
 allow-lan: false
 bind-address: '*'
@@ -87,6 +87,12 @@ proxy-groups:
   type: select
   proxies:
   - 🌍 Global-Auto
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🖥️ All-Nodes
   - DIRECT
 - name: 🖥️ All-Nodes
@@ -94,9 +100,59 @@ proxy-groups:
   include-all-providers: true
   proxies:
   - DIRECT
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: 🌍 Global-Auto
   type: url-test
   include-all-providers: true
+  url: https://www.gstatic.com/generate_204
+  interval: 600
+  tolerance: 50
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
+- name: 🇯🇵 日本-Auto
+  type: url-test
+  include-all-providers: true
+  filter: (?i)日本|Japan|Tokyo|Osaka|东京|大阪|🇯🇵|\bJP\b
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
+  url: https://www.gstatic.com/generate_204
+  interval: 600
+  tolerance: 50
+- name: 🇸🇬 新加坡-Auto
+  type: url-test
+  include-all-providers: true
+  filter: (?i)新加坡|狮城|Singapore|🇸🇬|\bSG\b
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
+  url: https://www.gstatic.com/generate_204
+  interval: 600
+  tolerance: 50
+- name: 🇺🇸 美国-Auto
+  type: url-test
+  include-all-providers: true
+  filter: (?i)美国|美國|United[ _-]?States|USA|🇺🇸|\bUS\b
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
+  url: https://www.gstatic.com/generate_204
+  interval: 600
+  tolerance: 50
+- name: 🇲🇾 马来西亚-Auto
+  type: url-test
+  include-all-providers: true
+  filter: (?i)马来西亚|馬來西亞|Malaysia|🇲🇾|\bMY\b
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
+  url: https://www.gstatic.com/generate_204
+  interval: 600
+  tolerance: 50
+- name: 🇰🇷 韩国-Auto
+  type: url-test
+  include-all-providers: true
+  filter: (?i)韩国|韓國|Korea|🇰🇷|\bKR\b
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
+  url: https://www.gstatic.com/generate_204
+  interval: 600
+  tolerance: 50
+- name: 🇳🇱 荷兰-Auto
+  type: url-test
+  include-all-providers: true
+  filter: (?i)荷兰|荷蘭|Netherlands|🇳🇱|\bNL\b
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
   url: https://www.gstatic.com/generate_204
   interval: 600
   tolerance: 50
@@ -104,192 +160,360 @@ proxy-groups:
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Netflix
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Disney+
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Emby
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Spotify
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: TikTok
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Twitch
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: ChatGPT
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Gemini
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Claude
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Grok
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Meta
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Telegram
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: LINE
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: LinkedIn
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Microsoft
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Google
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Apple
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: iCloud
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Amazon
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: X
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Github
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Speedtest
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - 🌍 Global-Auto
   - 🖥️ All-Nodes
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 - name: Apple Push
   type: select
   proxies:
   - 🔘 PROXY-Gate
+  - 🇯🇵 日本-Auto
+  - 🇸🇬 新加坡-Auto
+  - 🇺🇸 美国-Auto
+  - 🇲🇾 马来西亚-Auto
+  - 🇰🇷 韩国-Auto
+  - 🇳🇱 荷兰-Auto
   - DIRECT
   include-all-providers: true
+  exclude-filter: 套餐|剩余流量|流量剩余|流量用量|已用流量|总流量|流量重置|距离下次重置|到期|过期|有效期|剩余时间|官网|续费|公告|通知|客服|工单|邀请链接|使用说明
 rules:
 - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
 - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
