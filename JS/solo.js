@@ -904,6 +904,12 @@ function main(config) {
     "DOMAIN,hatch.metaaivm.com,Meta",
     "DOMAIN-SUFFIX,ilce.alicdn.com,DIRECT",
 
+    // 本站白名单：得到系站点及静态资源 CDN，避免被下方广告/隐私规则集误拦
+    "DOMAIN-SUFFIX,biji.com,DIRECT",
+    "DOMAIN-SUFFIX,umiwi.com,DIRECT",
+    "DOMAIN-SUFFIX,igetget.com,DIRECT",
+    "DOMAIN-SUFFIX,luojilab.com,DIRECT",
+
     // 广告 / 隐私
     "RULE-SET,Advertising,REJECT",
     "RULE-SET,Advertising_Domain,REJECT",
