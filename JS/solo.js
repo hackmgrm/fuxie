@@ -909,6 +909,8 @@ function main(config) {
     "DOMAIN-SUFFIX,umiwi.com,DIRECT",
     "DOMAIN-SUFFIX,igetget.com,DIRECT",
     "DOMAIN-SUFFIX,luojilab.com,DIRECT",
+    // Muse（Meta 的 AI）：广告域名库收录了 *.muse.ai，单独白名单
+    "DOMAIN-SUFFIX,muse.ai,Meta",
 
     // 广告 / 隐私
     "RULE-SET,Advertising,REJECT",
