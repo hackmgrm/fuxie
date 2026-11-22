@@ -979,6 +979,7 @@ function main(config) {
     "DOMAIN-SUFFIX,twitchsvc.net,Twitch",
 
     // ChatGPT
+    "DOMAIN-SUFFIX,chatgpt.com,ChatGPT",
     "RULE-SET,OpenAI_Domain,ChatGPT",
     "DOMAIN,cdn.openaimerge.com,ChatGPT",
     "DOMAIN,setup.auth.openai.com,ChatGPT",
